@@ -50,11 +50,12 @@ def gen_cord(result):
 
 
 def google_Master_this_shit(image):
+    print("GOOGLE OCR CHEGUEI AQUI POWHA")
     image = cv2.resize( image, (300,120), interpolation = cv2.INTER_CUBIC)
     image = cv2.medianBlur(image, 5)
 
     ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
-    chave = "AIzaSyBxl_DyJKqtJNwxxit8bNLF0QZSuuBp9AA"
+    chave = "AIzaSyDOvgDbm2fPs8mMsEdXBgOtO_lriKchI24" #chave google
     #cv2.imshow("img",image)
     #cv2.waitKey(0)
     pil_im = im.fromarray(image)

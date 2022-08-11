@@ -16,3 +16,6 @@
     - /venv/lib/python3.8/site-packages
     # Distro Linux
     - /usr/local/lib/python3.8/site-packages
+  7. Instalando dependências do requirement.txt
+    # CLI
+    - pip install -r requirements.txt
