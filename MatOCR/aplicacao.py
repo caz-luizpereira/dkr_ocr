@@ -210,7 +210,7 @@ def mainGeral(img, detections, category_index_desc, detection_model_desc):
     height = image.shape[0]
     # Apply ROI filtering and OCR
     matriculas_detected = []
-    print("LANDBOXES=>>", boxes)
+
     for idx, box in enumerate(boxes):
 
         roi = box*[height, width, height, width]
@@ -254,13 +254,9 @@ def mainGeral(img, detections, category_index_desc, detection_model_desc):
 
         classes_desc = detections_desc['detection_classes'][:len(scores_desc)]
 
-        #print("ja detetei tudo")
-
         width_desc = image_np_with_detections_desc.shape[1]
 
         height_desc = image_np_with_detections_desc.shape[0]
-
-        # print(len(boxes_desc))
 
         for i in range(len(classes_desc)):
 
@@ -284,7 +280,5 @@ def mainGeral(img, detections, category_index_desc, detection_model_desc):
 
         final = google.google_Master_this_shit(region_desc)        
         todas_Matriculas.append(final)
-        
-        print("FINAL =>>", len(todas_Matriculas))
 
     return todas_Matriculas

@@ -15,7 +15,6 @@ CORS(app)
 # Tunisia
 # @tf.function
 def detect_fn(image, detection_model):
-    print("ola")
     image, shapes = detection_model.preprocess(image)
     prediction_dict = detection_model.predict(image, shapes)
     detections = detection_model.postprocess(prediction_dict, shapes)
@@ -43,11 +42,8 @@ def imageTun():
         start = time.time()
 
         detections = detect_fn(input_tensor, detection_model)
-
-        # print(base64Data)
         # (base64Data,category_index,detection_model)#,category_index_desc,detection_model_desc)
         result = aplicacao.mainTun(base64Data, detections)
-        # print(result)
         a = str(result)
         #a = a.rstrip('\n')
 
@@ -72,12 +68,8 @@ def imageGeral():
 
         detections = detect_fn(input_tensor, detection_model)
 
-        print("DETECTIONS =>>", len(detections))
-
         # (base64Data,category_index,detection_model)#,category_index_desc,detection_model_desc)
         result = aplicacao.mainGeral(base64Data,detections,category_index_desc,detection_model_desc)
-
-        print("RESULT =>>", len(result))
 
         a = str(result)
 
