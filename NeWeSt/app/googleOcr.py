@@ -54,7 +54,7 @@ def google_Master_this_shit(image):
     image = cv2.medianBlur(image, 5)
 
     ENDPOINT_URL = 'https://vision.googleapis.com/v1/images:annotate'
-    chave = "AIzaSyAB3XKFqd98A2fM7B2ysk4F-r36XWZNcqw" #chave google
+    chave = "chave_google_api_ocr" #chave google
     #cv2.imshow("img",image)
     #cv2.waitKey(0)
     pil_im = im.fromarray(image)
