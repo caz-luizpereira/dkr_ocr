@@ -50,8 +50,8 @@ def imageTun():
         return str(a)
 
 
-@app.route("/geral", methods=['POST'])
-def imageGeral():
+@app.route("/googleocr", methods=['POST'])
+def googleOCR():
 
     category_index_desc,detection_model_desc = aplicacao.load_models_descartaveis()
     category_index, detection_model = aplicacao.load_models()
@@ -69,10 +69,37 @@ def imageGeral():
         detections = detect_fn(input_tensor, detection_model)
 
         # (base64Data,category_index,detection_model)#,category_index_desc,detection_model_desc)
-        result = aplicacao.mainGeral(base64Data,detections,category_index_desc,detection_model_desc)
+        result = aplicacao.mainGoogle(base64Data,detections,category_index_desc,detection_model_desc)
 
         a = str(result)
 
+        return str(a)
+        
+
+@app.route("/geral", methods=['POST'])
+def imageGeral():
+    
+    category_index,detection_model = aplicacao.load_models()
+    body = request.get_json()
+    while body["Server"] == "up":
+        base64Data = body["img"]
+        
+        image_64_decode = base64.b64decode(base64Data)
+        image = Image.open(io.BytesIO(image_64_decode))
+        image_np = np.array(image)
+        input_tensor = tf.convert_to_tensor(np.expand_dims(image_np, 0), dtype=tf.float32)
+        start = time.time()
+        
+        detections = detect_fn(input_tensor,detection_model)
+   
+        
+      
+        result = aplicacao.mainGeral(base64Data,detections)#(base64Data,category_index,detection_model)#,category_index_desc,detection_model_desc)
+      
+        a = str(result)
+      
+        
+        
         return str(a)
 
 
